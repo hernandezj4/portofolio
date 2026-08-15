@@ -64,34 +64,8 @@
     if (e.key === "Escape") setMenu(false);
   });
 
-  /* ---------- 5. CUSTOM CURSOR (desktop only) ---------- */
-  const finePointer = window.matchMedia("(pointer: fine)").matches;
-
-  if (finePointer && !reduceMotion) {
-    const dot = document.getElementById("cursor-dot");
-    const ring = document.getElementById("cursor-ring");
-
-    window.addEventListener("mousemove", (e) => {
-      dot.style.left = e.clientX + "px";
-      dot.style.top = e.clientY + "px";
-      ring.style.left = e.clientX + "px";
-      ring.style.top = e.clientY + "px";
-    }, { passive: true });
-
-    document.addEventListener("mouseover", (e) => {
-      if (e.target.closest("a, button, input, textarea, .tilt, .skill-card, .project-card")) {
-        ring.classList.add("grow");
-      }
-    });
-    document.addEventListener("mouseout", (e) => {
-      if (e.target.closest("a, button, input, textarea, .tilt, .skill-card, .project-card")) {
-        ring.classList.remove("grow");
-      }
-    });
-  }
-
-  /* ---------- 6. TILT 3D ---------- */
-  if (!reduceMotion && finePointer) {
+  /* ---------- 5. TILT 3D ---------- */
+  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
     document.querySelectorAll(".tilt").forEach((el) => {
       const max = 6;
       el.addEventListener("mousemove", (e) => {
