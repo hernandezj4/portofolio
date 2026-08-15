@@ -1,0 +1,26 @@
+# Dependencies / build
+node_modules/
+dist/
+build/
+
+# Opsional: upload gambar tempati CV asli
+# anggap CV placeholder di-ignore juga? jangan—CV asli justru butuh di-commit.
+# *.pdf bisa di-uncomment bila ingin mengecualikan semua PDF
+# *.pdf
+
+# Sistem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Log
+*.log
+npm-debug.log*
+
+# Env
+.env
+.env.local
