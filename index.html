@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ===== SEO BASIC ===== -->
-  <title>Hernandez | Portofolio IT</title>
+  <title>Hernandez — Web Developer & IT Student</title>
   <meta name="description" content="Portofolio IT Navaro Vidi Hernandez (Hernandez) — Web Developer & IT Student. Lihat proyek, skill, dan hubungi saya." />
   <meta name="author" content="Navaro Vidi Hernandez" />
   <meta name="keywords" content="portofolio, web developer, it student, html, css, javascript" />
@@ -13,20 +13,25 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Hernandez | Portofolio IT" />
+  <meta property="og:title" content="Hernandez — Web Developer & IT Student" />
   <meta property="og:description" content="Portofolio IT Navaro Vidi Hernandez (Hernandez) — Web Developer & IT Student." />
   <meta property="og:url" content="https://hernandez.dev/" />
   <meta property="og:image" content="assets/images/og-image.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Hernandez | Portofolio IT" />
+  <meta name="twitter:title" content="Hernandez — Web Developer & IT Student" />
   <meta name="twitter:description" content="Portofolio IT Navaro Vidi Hernandez (Hernandez)." />
 
-  <!-- Theme + Favicon (inline SVG data-uri, tanpa file tambahan) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236366f1'/%3E%3Ctext x='32' y='44' font-size='34' font-family='monospace' font-weight='bold' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FFD23F' stroke='%23161616' stroke-width='7'/%3E%3Ctext x='32' y='47' font-size='34' font-family='monospace' font-weight='bold' fill='%23161616' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
 
-  <!-- Struktur Data: Person (SEO) -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Struktur Data Person -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,265 +49,362 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- ===== SKIP LINK (aksesibilitas) ===== -->
-  <a class="skip-link" href="#beranda">Langsung ke konten</a>
+  <!-- Overlay grain + progres scroll -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <!-- Custom cursor follower -->
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
-  <!-- ===== NAVBAR ===== -->
+  <a class="skip-link" href="#beranda">LONCAT KE KONTEN</a>
+
+  <!-- ===== HEADER ===== -->
   <header class="navbar" id="navbar">
     <nav class="nav container" aria-label="Navigasi utama">
-      <a href="#beranda" class="nav-logo" aria-label="Hernandez, kembali ke beranda">
-        <span class="nav-logo-mark">&lt;H/&gt;</span>
+      <a href="#beranda" class="nav-logo" aria-label="Hernandez, kembali ke atas">
+        <span class="logo-mark">&lt;H/&gt;</span>
+        <span class="logo-year">@2026</span>
       </a>
 
       <ul class="nav-links" id="nav-links">
-        <li><a href="#beranda" class="nav-link active">Beranda</a></li>
-        <li><a href="#tentang" class="nav-link">Tentang</a></li>
-        <li><a href="#skill" class="nav-link">Skill</a></li>
-        <li><a href="#proyek" class="nav-link">Proyek</a></li>
-        <li><a href="#kontak" class="nav-link">Kontak</a></li>
+        <li><a href="#beranda" class="nav-link active"><span class="nav-num">00</span>Beranda</a></li>
+        <li><a href="#tentang" class="nav-link"><span class="nav-num">01</span>Tentang</a></li>
+        <li><a href="#skill" class="nav-link"><span class="nav-num">02</span>Skill</a></li>
+        <li><a href="#proyek" class="nav-link"><span class="nav-num">03</span>Proyek</a></li>
+        <li><a href="#kontak" class="nav-link"><span class="nav-num">04</span>Kontak</a></li>
       </ul>
 
       <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ganti mode terang/gelap" title="Ganti tema">
-          <span class="icon-sun" aria-hidden="true">☀️</span>
-          <span class="icon-moon" aria-hidden="true">🌙</span>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ganti mode gelap/terang" title="Ganti tema">
+          <svg class="theme-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" />
+            <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" />
+          </svg>
+          <svg class="theme-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" />
+          </svg>
         </button>
-        <a href="assets/downloads/CV_Navaro_Vidi_Hernandez.pdf" download class="btn btn-primary nav-cta">Download CV</a>
-        <button class="nav-burger" id="nav-burger" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="nav-links">
+        <a href="assets/downloads/CV_Navaro_Vidi_Hernandez.pdf" download class="btn btn-accent nav-cta">Get CV ↓</a>
+        <button class="nav-burger" id="nav-burger" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-links">
           <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
   </header>
 
+  <!-- ===== MARQUEE (ticker tape) ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee-hero">
+      <span>✦ OPEN TO OPPORTUNITIES</span>
+      <span>HTML5</span>
+      <span>✚</span>
+      <span>CSS GRID & FLEXBOX</span>
+      <span>✚</span>
+      <span>JAVASCRIPT</span>
+      <span>✚</span>
+      <span>RESPONSIVE DESIGN</span>
+      <span>✚</span>
+      <span>GIT & GITHUB</span>
+      <span>✚</span>
+    </div>
+  </div>
+
   <main>
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="beranda" aria-labelledby="hero-title">
+    <!-- ===== 00 / HERO ===== -->
+    <section class="hero" id="beranda">
       <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="hero-greeting">Halo, saya 👋</p>
-          <h1 class="hero-title" id="hero-title">Navaro Vidi Hernandez</h1>
-          <p class="hero-role">
-            <span id="type-text" aria-live="polite"></span><span class="type-cursor" aria-hidden="true">|</span>
+        <div class="hero-left">
+          <p class="hero-kicker mono">/ MAHASISWA-IT · WEB-DEV</p>
+
+          <h1 class="hero-title">
+            HERNANDEZ<span class="title-dot">.</span>
+          </h1>
+
+          <p class="hero-sub">
+            Membangun <span class="brush">web yang berkesan</span><br />bukan sekadar tampil.
           </p>
+
           <p class="hero-desc">
-            Mahasiswa IT yang antusias membangun web modern, bersih, dan responsif.
-            Fokus pada <strong>HTML5</strong>, <strong>CSS modern</strong>, dan <strong>JavaScript</strong>.
+            Saya <strong>Navaro Vidi Hernandez</strong> — mahasiswa IT yang fokus pada
+            HTML5 semantik, CSS modern, dan JavaScript. Menyukai antarmuka yang tajam,
+            jelas, dan cepat.
           </p>
+
+          <p class="avail mono"><span class="pulse-dot"></span> OPEN TO OPPORTUNITIES</p>
+
           <div class="hero-actions">
-            <a href="#proyek" class="btn btn-primary">Lihat Proyek</a>
-            <a href="#kontak" class="btn btn-outline">Hubungi Saya</a>
+            <a href="#proyek" class="btn btn-accent btn-lg">See Projects →</a>
+            <a href="assets/downloads/CV_Navaro_Vidi_Hernandez.pdf" download class="btn btn-ghost btn-lg">Download CV ↓</a>
           </div>
 
           <ul class="hero-social" aria-label="Media sosial">
             <li>
-              <a href="https://github.com/navarovidih" target="_blank" rel="noopener noreferrer" title="GitHub">
+              <a href="https://github.com/navarovidih" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub" aria-label="GitHub">
                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.35-3.87-1.35-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.35.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.18-1.49 3.14-1.18 3.14-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/navarovidih" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/navarovidih" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn" aria-label="LinkedIn">
                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.49 2.49 0 1 1 0 3.5a2.49 2.49 0 0 1 4.98 0zM.5 8.03h4.46V23.5H.5zM8.5 8.03h4.28v2.12h.06c.6-1.13 2.06-2.32 4.25-2.32 4.54 0 5.38 2.99 5.38 6.88v8.79h-4.46v-7.8c0-1.86-.03-4.25-2.59-4.25-2.59 0-2.99 2.02-2.99 4.11v7.94H8.5z"/></svg>
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/navarovidih" target="_blank" rel="noopener noreferrer" title="Instagram">
-                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.79c-3.15 0-3.52.01-4.76.07-1.08.05-1.66.23-2.05.38-.51.2-.88.44-1.26.82-.38.38-.62.75-.82 1.26-.15.39-.33.97-.38 2.05-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.05 1.08.23 1.66.38 2.05.2.51.44.88.82 1.26.38.38.75.62 1.26.82.39.15.97.33 2.05.38 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c1.08-.05 1.66-.23 2.05-.38.51-.2.88-.44 1.26-.82.38-.38.62-.75.82-1.26.15-.39.33-.97.38-2.05.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.05-1.08-.23-1.66-.38-2.05-.2-.51-.44-.88-.82-1.26a3.4 3.4 0 0 0-1.26-.82c-.39-.15-.97-.33-2.05-.38-1.24-.06-1.61-.07-4.76-.07zm0 4.03a5.01 5.01 0 1 1 0 10.02 5.01 5.01 0 0 1 0-10.02zm0 1.79a3.22 3.22 0 1 0 0 6.44 3.22 3.22 0 0 0 0-6.44zm6.44-3.32a1.17 1.17 0 1 1-2.34 0 1.17 1.17 0 0 1 2.34 0z"/></svg>
+              <a href="https://www.instagram.com/navarovidih" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" aria-label="Instagram">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.79c-3.15 0-3.52.01-4.76.07-1.08.05-1.66.23-2.05.38-.51.2-.88.44-1.26.82-.38.38-.62.75-.82 1.26-.15.39-.33.97-.38 2.05-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.05 1.08.23 1.66.38 2.05.2.51.44.88.82 1.26.38.38.75.62 1.26.82.39.15.97.33 2.05.38 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c1.08-.05 1.66-.23 2.05-.38.51-.2.88-.44 1.26-.82.38-.38.62-.75.82-1.26.15-.39.33-.97.38-2.05.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.05-1.08-.23-1.66-.38-2.05-0-.51-.2-.88-.38-1.26a5.4 5.4 0 0 1-.88-.82c-.17-.32-.3-.68-.39-1.09-.04-.27-.05-.57-.05-.91 0-.5.01-.87.05-1.11.08-.43.2-.96.37-1.5a3.7 3.7 0 0 1 .54-.98c.17-.21.38-.4.6-.56.18-.13.38-.24.61-.34.3-.13.6-.23.93-.3.55-.1 1.19-.16 1.92-.18 1.05-.03 1.28-.03 4.6-.03zM12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 1.79a2.91 2.91 0 1 1 0 5.82 2.91 2.91 0 0 1 0-5.82zm6.44-3.73a1.17 1.17 0 1 1-2.34 0 1.17 1.17 0 0 1 2.34 0z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:navarovidih@email.com" class="social-btn" title="Email" aria-label="Email">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5-8-5V6h16v2.24zM4 7.5l7.45 4.66a1 1 0 0 0 1.1 0L20 7.5V18H4V7.5z"/></svg>
               </a>
             </li>
           </ul>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="avatar-frame">
-            <div class="avatar-code" role="img" aria-label="Ilustrasi avatar kode">
-              <span class="avatar-line l1">const dev = {</span>
-              <span class="avatar-line l2">&nbsp;&nbsp;nama: "Hernandez",</span>
-              <span class="avatar-line l3">&nbsp;&nbsp;peran: "&lt;Developer/&gt;",</span>
-              <span class="avatar-line l4">};</span>
+        <div class="hero-right">
+          <div class="hero-card tilt" id="hero-card">
+            <span class="tape" aria-hidden="true"></span>
+            <div class="hero-code mono" role="img" aria-label="Cuplikan kode">
+              <p class="hl-1">const <em>hernandez</em> = {</p>
+              <p class="hl-2">&nbsp;&nbsp;peran: 'Web Dev',</p>
+              <p class="hl-2">&nbsp;&nbsp;tools: ['HTML5','CSS','JS'],</p>
+              <p class="hl-3">&nbsp;&nbsp;status: 'open to work',</p>
+              <p class="hl-1">};</p>
             </div>
+            <span class="sticker sticker-green">✓ DIBUKA KERJA</span>
+            <span class="sticker sticker-yellow tilt-lite">v2.0</span>
           </div>
-          <span class="blob blob-1"></span>
-          <span class="blob blob-2"></span>
+          <span class="hero-bigword" aria-hidden="true">DEV.</span>
         </div>
       </div>
 
-      <a href="#tentang" class="hero-scroll" aria-label="Gulir ke bawah">
-        <span class="mouse"><span class="mouse-wheel"></span></span>
+      <a href="#tentang" class="hero-scroll mono" aria-label="Gulir ke bawah">
+        / scroll ↓
       </a>
     </section>
 
-    <!-- ===== TENTANG ===== -->
+    <!-- ===== 01 / TENTANG ===== -->
     <section class="section" id="tentang">
       <div class="container">
-        <div class="section-head">
-          <p class="section-tag">Tentang Saya</p>
-          <h2 class="section-title">Kenalan dulu, yuk!</h2>
-          <div class="section-line"></div>
+        <div class="section-head reveal" data-delay="0">
+          <p class="section-tag mono">[ 01 / TENTANG ]</p>
+          <h2 class="section-title">Kenalan, yuk<span class="title-dot">.</span></h2>
         </div>
 
         <div class="about-grid">
-          <div class="about-text reveal">
+          <div class="about-text reveal" data-delay="80">
             <p>
-              Halo! Saya <strong>Navaro Vidi Hernandez</strong>, biasa dipanggil <strong>Hernandez</strong>.
-              Saya seorang <strong>mahasiswa IT</strong> yang sedang mendalami pengembangan web.
+              Halo! Saya <strong>Navaro Vidi Hernandez</strong>. Anda bisa memanggil saya
+              <strong>Hernandez</strong>.
             </p>
             <p>
-              Saya suka mengubah ide menjadi antarmuka yang menarik dan fungsional menggunakan
-              HTML5 semantik, CSS modern dengan Flexbox &amp; Grid, serta JavaScript.
-              Setiap proyek adalah kesempatan untuk belajar sesuatu yang baru.
+              Seorang <strong>mahasiswa IT</strong> yang menikmati proses mengubah ide
+              jadi produk nyata — antarmuka yang tajam, terstruktur rapi, dan terasa
+              hidup.
             </p>
             <p>
-              Saat ini saya berfokus membangun portofolio yang rapi, deploy ke GitHub Pages, dan
-              terus mengasah kemampuan. Pesan saya: <em>"Terus mencoba, terus berkembang."</em>
+              Keseharian saya: HTML5 semantik, CSS (Flexbox &amp; Grid), JavaScript, dan
+              terus belajar hal baru setiap minggu.
             </p>
+            <blockquote class="about-quote">
+              <span class="quote-mark">"</span>
+              <p>Terus mencoba, terus berkembang — kode yang bagus lahir dari proses yang sabar.</p>
+            </blockquote>
           </div>
 
-          <ul class="about-facts reveal" aria-label="Fakta singkat">
-            <li><span class="fact-label">Nama</span><span>Navaro Vidi Hernandez</span></li>
-            <li><span class="fact-label">Panggilan</span><span>Hernandez</span></li>
-            <li><span class="fact-label">Bidang</span><span>Web Developer &amp; IT</span></li>
-            <li><span class="fact-label">Lokasi</span><span>Indonesia</span></li>
-            <li><span class="fact-label">Email</span><span>navarovidih@email.com</span></li>
+          <ul class="about-facts reveal" data-delay="160" aria-label="Fakta singkat">
+            <li><span class="fact-key mono">NAMA</span><span>Navaro Vidi Hernandez</span></li>
+            <li><span class="fact-key mono">PANGGILAN</span><span>Hernandez</span></li>
+            <li><span class="fact-key mono">BIDANG</span><span>Web Dev &amp; IT</span></li>
+            <li><span class="fact-key mono">LOKASI</span><span>Indonesia</span></li>
+            <li><span class="fact-key mono">EMAIL</span><a href="mailto:navarovidih@email.com">navarovidih@email.com</a></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ===== SKILL ===== -->
-    <section class="section section-alt" id="skill">
+    <!-- ===== 02 / SKILL ===== -->
+    <section class="section section-tape" id="skill">
       <div class="container">
-        <div class="section-head">
-          <p class="section-tag">Keahlian</p>
-          <h2 class="section-title">Skill yang Saya Pelajari</h2>
-          <div class="section-line"></div>
+        <div class="section-head reveal" data-delay="0">
+          <p class="section-tag mono">[ 02 / SKILL ]</p>
+          <h2 class="section-title">Power level<span class="title-dot">.</span></h2>
         </div>
 
         <div class="skills-grid">
-          <article class="skill-card reveal">
-            <div class="skill-icon" aria-hidden="true">🌐</div>
-            <h3>HTML5 Semantik</h3>
-            <p>Struktur halaman bersih, aksesibel, dan mudah dibaca mesin.</p>
-            <div class="skill-meter"><span style="width: 90%" data-level="90%"></span></div>
+          <article class="skill-card reveal" data-delay="0" style="--card-accent:var(--accent)">
+            <div class="skill-top">
+              <span class="skill-idx mono">S1</span>
+              <h3>HTML5 Semantic</h3>
+            </div>
+            <p>Struktur bersih, aksesibel, dan ramah mesin pencari.</p>
+            <div class="seg-bar mono" data-level="90" aria-label="Tingkat keahlian 90%">
+              <span class="seg s1">▮</span><span class="seg s2">▮</span><span class="seg s3">▮</span><span class="seg s4">▮</span><span class="seg s5">▮</span><span class="seg s6">▮</span><span class="seg s7">▮</span><span class="seg s8">▮</span><span class="seg s9">▮</span><span class="seg s10">▯</span>
+            </div>
+            <p class="skill-uses mono">DIPAKAI: LANDING PAGE, BLOG, SEMANTIK</p>
           </article>
 
-          <article class="skill-card reveal">
-            <div class="skill-icon" aria-hidden="true">🎨</div>
-            <h3>CSS Modern</h3>
-            <p>Flexbox, Grid, custom properties, dan animasi yang halus.</p>
-            <div class="skill-meter"><span style="width: 85%" data-level="85%"></span></div>
+          <article class="skill-card reveal" data-delay="60" style="--card-accent:var(--yellow)">
+            <div class="skill-top">
+              <span class="skill-idx mono">S2</span>
+              <h3>CSS Modern</h3>
+            </div>
+            <p>Flexbox, Grid, custom properties, dan animasi presisi.</p>
+            <div class="seg-bar mono" data-level="85" aria-label="Tingkat keahlian 85%">
+              <span class="seg s1">▮</span><span class="seg s2">▮</span><span class="seg s3">▮</span><span class="seg s4">▮</span><span class="seg s5">▮</span><span class="seg s6">▮</span><span class="seg s7">▮</span><span class="seg s8">▮</span><span class="seg s9">▯</span><span class="seg s10">▯</span>
+            </div>
+            <p class="skill-uses mono">DIPAKAI: LAYOUT KOMPLEKS, TEMA, ANIMASI</p>
           </article>
 
-          <article class="skill-card reveal">
-            <div class="skill-icon" aria-hidden="true">⚡</div>
-            <h3>JavaScript</h3>
-            <p>Interaksi dinamis: toggle tema, filter proyek, efek ketik.</p>
-            <div class="skill-meter"><span style="width: 75%" data-level="75%"></span></div>
+          <article class="skill-card reveal" data-delay="120" style="--card-accent:var(--pink)">
+            <div class="skill-top">
+              <span class="skill-idx mono">S3</span>
+              <h3>JavaScript</h3>
+            </div>
+            <p>Interaksi dinamis, manipulasi DOM, dan logika aplikasi.</p>
+            <div class="seg-bar mono" data-level="75" aria-label="Tingkat keahlian 75%">
+              <span class="seg s1">▮</span><span class="seg s2">▮</span><span class="seg s3">▮</span><span class="seg s4">▮</span><span class="seg s5">▮</span><span class="seg s6">▮</span><span class="seg s7">▮</span><span class="seg s8">▯</span><span class="seg s9">▯</span><span class="seg s10">▯</span>
+            </div>
+            <p class="skill-uses mono">DIPAKAI: WEB APP, LOGIKA, FETCH API</p>
           </article>
 
-          <article class="skill-card reveal">
-            <div class="skill-icon" aria-hidden="true">📱</div>
-            <h3>Responsive Design</h3>
-            <p>Pendekatan mobile-first, tampil apik di semua ukuran layar.</p>
-            <div class="skill-meter"><span style="width: 80%" data-level="80%"></span></div>
+          <article class="skill-card reveal" data-delay="0" style="--card-accent:var(--accent)">
+            <div class="skill-top">
+              <span class="skill-idx mono">S4</span>
+              <h3>Responsive Design</h3>
+            </div>
+            <p>Mobile-first, tampil mantap di semua ukuran layar.</p>
+            <div class="seg-bar mono" data-level="80" aria-label="Tingkat keahlian 80%">
+              <span class="seg s1">▮</span><span class="seg s2">▮</span><span class="seg s3">▮</span><span class="seg s4">▮</span><span class="seg s5">▮</span><span class="seg s6">▮</span><span class="seg s7">▮</span><span class="seg s8">▮</span><span class="seg s9">▯</span><span class="seg s10">▯</span>
+            </div>
+            <p class="skill-uses mono">DIPAKAI: SEMUA KARYA DI SINI</p>
           </article>
 
-          <article class="skill-card reveal">
-            <div class="skill-icon" aria-hidden="true">🔧</div>
-            <h3>Git &amp; GitHub</h3>
-            <p>Version control, branching, dan deployment via GitHub Pages.</p>
-            <div class="skill-meter"><span style="width: 70%" data-level="70%"></span></div>
+          <article class="skill-card reveal" data-delay="60" style="--card-accent:var(--yellow)">
+            <div class="skill-top">
+              <span class="skill-idx mono">S5</span>
+              <h3>Git &amp; GitHub</h3>
+            </div>
+            <p>Version control, branching, dan deploy lewat GitHub Pages.</p>
+            <div class="seg-bar mono" data-level="70" aria-label="Tingkat keahlian 70%">
+              <span class="seg s1">▮</span><span class="seg s2">▮</span><span class="seg s3">▮</span><span class="seg s4">▮</span><span class="seg s5">▮</span><span class="seg s6">▮</span><span class="seg s7">▯</span><span class="seg s8">▯</span><span class="seg s9">▯</span><span class="seg s10">▯</span>
+            </div>
+            <p class="skill-uses mono">DIPAKAI: VERSIONING, DEPLOY</p>
           </article>
 
-          <article class="skill-card reveal">
-            <div class="skill-icon" aria-hidden="true">💡</div>
-            <h3>Problem Solving</h3>
-            <p>Membongkar masalah dan menemukan solusi yang simpel &amp; efisien.</p>
-            <div class="skill-meter"><span style="width: 85%" data-level="85%"></span></div>
+          <article class="skill-card reveal" data-delay="120" style="--card-accent:var(--pink)">
+            <div class="skill-top">
+              <span class="skill-idx mono">S6</span>
+              <h3>Problem Solving</h3>
+            </div>
+            <p>Memecah masalah rumit jadi langkah-langkah kecil yang jelas.</p>
+            <div class="seg-bar mono" data-level="85" aria-label="Tingkat keahlian 85%">
+              <span class="seg s1">▮</span><span class="seg s2">▮</span><span class="seg s3">▮</span><span class="seg s4">▮</span><span class="seg s5">▮</span><span class="seg s6">▮</span><span class="seg s7">▮</span><span class="seg s8">▮</span><span class="seg s9">▯</span><span class="seg s10">▯</span>
+            </div>
+            <p class="skill-uses mono">DIPAKAI: DEBUG, OPTIMASI, LOGIKA</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== PROYEK ===== -->
+    <!-- ===== 03 / PROYEK ===== -->
     <section class="section" id="proyek">
       <div class="container">
-        <div class="section-head">
-          <p class="section-tag">Proyek</p>
-          <h2 class="section-title">Karya &amp; Showcase</h2>
-          <div class="section-line"></div>
+        <div class="section-head reveal" data-delay="0">
+          <p class="section-tag mono">[ 03 / PROYEK ]</p>
+          <h2 class="section-title">Pekerjaan<a class="arr" href="#kontak" aria-hidden="true">→</a><span class="title-dot">.</span></h2>
         </div>
 
-        <div class="filter-bar" role="tablist" aria-label="Filter kategori proyek">
-          <button class="filter-btn active" data-filter="semua" role="tab" aria-selected="true">Semua</button>
-          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
+        <div class="filter-bar reveal" data-delay="60" role="tablist" aria-label="Filter kategori proyek">
+          <button class="filter-btn active" data-filter="semua" role="tab" aria-selected="true">ALL</button>
+          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">WEB</button>
           <button class="filter-btn" data-filter="uiux" role="tab" aria-selected="false">UI/UX</button>
-          <button class="filter-btn" data-filter="lain" role="tab" aria-selected="false">Lainnya</button>
+          <button class="filter-btn" data-filter="lain" role="tab" aria-selected="false">OTHER</button>
         </div>
 
         <div class="projects-grid" id="projects-grid">
-          <!-- Diisi dinamis oleh js/projects.js -->
+          <!-- Dibuild oleh js/projects.js -->
         </div>
       </div>
     </section>
 
-    <!-- ===== KONTAK ===== -->
-    <section class="section section-alt" id="kontak">
+    <!-- ===== 04 / KONTAK ===== -->
+    <section class="section section-tape" id="kontak">
       <div class="container">
-        <div class="section-head">
-          <p class="section-tag">Kontak</p>
-          <h2 class="section-title">Mari Bekerja Sama</h2>
-          <div class="section-line"></div>
+        <div class="section-head reveal" data-delay="0">
+          <p class="section-tag mono">[ 04 / KONTAK ]</p>
+          <h2 class="section-title">Kerja bareng<span class="title-dot">?</span></h2>
         </div>
 
         <div class="contact-grid">
-          <div class="contact-info reveal">
+          <div class="contact-info reveal" data-delay="80">
             <p>
-              Punya proyek, tugas, atau ide yang mau dikerjakan bareng?
-              Jangan ragu hubungi saya. Balasan biasanya dalam 1&ndash;2 hari.
+              Ada proyek, tugas, atau ide liar? Jangan ragu —
+              kirim pesan, balasan maksimal 1–2 hari.
             </p>
-            <ul class="contact-list">
-              <li><span class="contact-emoji" aria-hidden="true">📧</span><a href="mailto:navarovidih@email.com">navarovidih@email.com</a></li>
-              <li><span class="contact-emoji" aria-hidden="true">📱</span><a href="tel:+62081234567890">+62 812-3456-7890</a></li>
-              <li><span class="contact-emoji" aria-hidden="true">📍</span><span>Indonesia</span></li>
-            </ul>
+
+            <div class="contact-cards">
+              <a href="mailto:navarovidih@email.com" class="contact-card">
+                <span class="contact-code mono">MAIL</span>
+                <span class="contact-val">navarovidih@email.com</span>
+              </a>
+              <a href="tel:+62081234567890" class="contact-card">
+                <span class="contact-code mono">WA / TEL</span>
+                <span class="contact-val">+62 812-3456-7890</span>
+              </a>
+              <span class="contact-card contact-card-static">
+                <span class="contact-code mono">LOC</span>
+                <span class="contact-val">Indonesia · GMT+7</span>
+              </span>
+            </div>
           </div>
 
-          <form class="contact-form reveal" id="contact-form" novalidate>
+          <form class="contact-form reveal" data-delay="160" id="contact-form" novalidate>
             <div class="form-row">
               <div class="form-group">
-                <label for="nama">Nama</label>
+                <label for="nama" class="mono">NAMA *</label>
                 <input type="text" id="nama" name="nama" placeholder="Nama kamu" required autocomplete="name" />
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email" class="mono">EMAIL *</label>
                 <input type="email" id="email" name="email" placeholder="email@kamu.com" required autocomplete="email" />
               </div>
             </div>
 
             <div class="form-group">
-              <label for="pesan">Pesan</label>
+              <label for="pesan" class="mono">PESAN *</label>
               <textarea id="pesan" name="pesan" rows="5" placeholder="Tulis pesanmu di sini..." required></textarea>
             </div>
 
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-            <button type="submit" class="btn btn-primary btn-block">Kirim Pesan</button>
+            <button type="submit" class="btn btn-accent btn-block btn-lg">KIRIM PESAN →</button>
           </form>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ===== MARQUEE BAWAH ===== -->
+  <div class="marquee marquee-bottom" aria-hidden="true">
+    <div class="marquee-track marquee-reverse" id="marquee-bottom">
+      <span>THANKS FOR SCROLLING</span>
+      <span>✚</span>
+      <span>LET'S BUILD SOMETHING</span>
+      <span>✚</span>
+      <span>HERNANDEZ © 2026</span>
+      <span>✚</span>
+    </div>
+  </div>
+
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <p class="footer-brand">&lt;H/&gt; Hernandez</p>
-      <p class="footer-text">Dibuat dengan ❤️ menggunakan HTML5, CSS, &amp; JavaScript &mdash; © 2026</p>
-      <a href="#beranda" class="back-top" aria-label="Kembali ke atas">↑</a>
+      <a href="#beranda" class="footer-logo">&lt;H/&gt;</a>
+      <p class="footer-text mono">&lt;H/&gt; — DIBUAT DENGAN KODE &amp; KOPI · © <span id="footer-year">2026</span></p>
+      <a href="#beranda" class="back-top" aria-label="Kembali ke atas">↑ TOP</a>
     </div>
   </footer>
 
-  <!-- ===== SCRIPTS ===== -->
   <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
 </body>
